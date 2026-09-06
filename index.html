@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SnapNotes — Privacy Policy</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0B0B0C; color: #E8E8EA; font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.7; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 80px; }
+  header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .logo { width: 40px; height: 40px; border-radius: 10px; background: #0B0B0C; border: 1px solid #2A2B2F; display: flex; align-items: center; justify-content: center; }
+  .logo svg { width: 30px; height: 30px; }
+  h1 { font-size: 26px; font-weight: 700; color: #fff; }
+  .meta { color: #5C5E63; font-size: 14px; margin-bottom: 36px; }
+  .badge { display: inline-block; background: rgba(198,240,76,.12); color: #C6F04C; border: 1px solid rgba(198,240,76,.3); border-radius: 999px; padding: 4px 14px; font-size: 12px; font-weight: 600; margin-bottom: 24px; letter-spacing: .03em; }
+  h2 { font-size: 19px; color: #fff; margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 1px solid #1F2024; }
+  p { margin-bottom: 14px; color: #B5B7BC; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+  th, td { text-align: left; padding: 10px 12px; border: 1px solid #2A2B2F; }
+  th { background: #141416; color: #C6F04C; font-weight: 600; }
+  td { color: #A8AAAF; background: #0E0F12; }
+  code { background: #141416; border: 1px solid #2A2B2F; border-radius: 4px; padding: 1px 6px; font-family: Consolas, monospace; font-size: .9em; color: #D8C7F5; }
+  a { color: #C6F04C; }
+  footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid #1F2024; color: #4A4B50; font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">
+      <svg viewBox="0 0 48 48" fill="none">
+        <rect x="1.5" y="1.5" width="45" height="45" rx="10" fill="#0B0B0C" stroke="#2A2B2F"/>
+        <g stroke="#C6F04C" stroke-width="3.4" stroke-linecap="round">
+          <path d="M16 7.5H10.5A3 3 0 0 0 7.5 10.5V16"/>
+          <path d="M32 7.5h5.5a3 3 0 0 1 3 3V16"/>
+          <path d="M16 40.5h-5.5a3 3 0 0 1-3-3V32"/>
+          <path d="M32 40.5h5.5a3 3 0 0 0 3-3V32"/>
+        </g>
+        <rect x="17.5" y="16" width="13" height="18" rx="2.5" fill="#C6F04C"/>
+        <path d="M21 24h6M21 28.5h6" stroke="#0B0B0C" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <h1>SnapNotes</h1>
+  </header>
+  <div class="meta">Chrome Extension — Privacy Policy</div>
+  <span class="badge">✓ No data collected</span>
+
+  <h2>Summary</h2>
+  <p>SnapNotes does <strong>not</strong> collect, store, transmit, or share any personal data. All processing happens locally on your device.</p>
+
+  <h2>Data handling</h2>
+  <table>
+    <tr><th>Data</th><th>What happens</th></tr>
+    <tr><td>Screenshots / captured images</td><td>Processed locally in your browser for OCR. Never uploaded.</td></tr>
+    <tr><td>OCR text / notes</td><td>Stored ONLY in your browser's local storage (IndexedDB + your Downloads folder as PNG files). Never transmitted.</td></tr>
+    <tr><td>Custom subjects</td><td>Stored locally in your browser (<code>chrome.storage</code>). Never transmitted.</td></tr>
+    <tr><td>Usage analytics</td><td>None. No analytics, no telemetry, no tracking scripts.</td></tr>
+  </table>
+
+  <h2>Permissions explained</h2>
+  <table>
+    <tr><th>Permission</th><th>Why we need it</th></tr>
+    <tr><td><code>activeTab</code> + <code>scripting</code></td><td>To inject the drag-select overlay on the page you are viewing when you press Snap.</td></tr>
+    <tr><td><code>tabs</code> + <code>captureVisibleTab</code></td><td>To take a screenshot of the current tab for OCR.</td></tr>
+    <tr><td><code>downloads</code></td><td>To save your screenshot/note PNG files to your Downloads folder.</td></tr>
+    <tr><td><code>storage</code></td><td>To save your custom subjects and note index locally.</td></tr>
+  </table>
+
+  <h2>Google Translate (optional)</h2>
+  <p>When you press the Translate button, the OCR text is opened in Google Translate in a new tab. At that point the text is sent to Google under Google's own privacy policy, because you explicitly chose to translate it. This never happens automatically.</p>
+
+  <h2>Third-party services</h2>
+  <p><strong>Tesseract.js OCR engine</strong> — bundled inside the extension, runs fully offline. No network requests.</p>
+  <p><strong>Google Translate</strong> — only when you click Translate (optional).</p>
+
+  <footer>Questions about this policy: contact the developer via the Chrome Web Store developer page.<br>Effective date: September 2026</footer>
+</div>
+</body>
+</html>

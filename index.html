@@ -4,31 +4,94 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SnapNotes — Privacy Policy</title>
+<meta name="description" content="SnapNotes Chrome extension privacy policy. No data collected. All OCR runs 100% on-device.">
 <style>
   :root { color-scheme: dark; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: #0B0B0C; color: #E8E8EA; font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.7; }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 80px; }
-  header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
-  .logo { width: 40px; height: 40px; border-radius: 10px; background: #0B0B0C; border: 1px solid #2A2B2F; display: flex; align-items: center; justify-content: center; }
-  .logo svg { width: 30px; height: 30px; }
-  h1 { font-size: 26px; font-weight: 700; color: #fff; }
-  .meta { color: #5C5E63; font-size: 14px; margin-bottom: 36px; }
-  .badge { display: inline-block; background: rgba(198,240,76,.12); color: #C6F04C; border: 1px solid rgba(198,240,76,.3); border-radius: 999px; padding: 4px 14px; font-size: 12px; font-weight: 600; margin-bottom: 24px; letter-spacing: .03em; }
-  h2 { font-size: 19px; color: #fff; margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 1px solid #1F2024; }
-  p { margin-bottom: 14px; color: #B5B7BC; }
-  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
-  th, td { text-align: left; padding: 10px 12px; border: 1px solid #2A2B2F; }
-  th { background: #141416; color: #C6F04C; font-weight: 600; }
-  td { color: #A8AAAF; background: #0E0F12; }
-  code { background: #141416; border: 1px solid #2A2B2F; border-radius: 4px; padding: 1px 6px; font-family: Consolas, monospace; font-size: .9em; color: #D8C7F5; }
-  a { color: #C6F04C; }
-  footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid #1F2024; color: #4A4B50; font-size: 13px; }
+  html { scroll-behavior: smooth; }
+  body { background: #070708; color: #E8E8EA; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+  /* ambient glow */
+  .bg { position: fixed; inset: 0; z-index: -1; background:
+    radial-gradient(600px 300px at 15% -10%, rgba(198,240,76,.05), transparent 60%),
+    radial-gradient(800px 400px at 90% 10%, rgba(126,87,194,.08), transparent 60%),
+    radial-gradient(700px 500px at 50% 110%, rgba(198,240,76,.04), transparent 60%); }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 28px; }
+
+  /* nav */
+  nav { display: flex; align-items: center; gap: 14px; padding: 26px 0 10px; }
+  .logo { width: 38px; height: 38px; border-radius: 10px; background: #0B0B0C; border: 1px solid #2A2B2F; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 1px rgba(255,255,255,.02); }
+  .logo svg { width: 28px; height: 28px; }
+  .brandname { font-size: 17px; font-weight: 700; color: #fff; letter-spacing: .01em; }
+  .brandname span { color: #C6F04C; }
+  nav .right { margin-left: auto; display: flex; gap: 18px; font-size: 13px; }
+  nav .right a { color: #87898F; text-decoration: none; transition: color .15s; }
+  nav .right a:hover { color: #C6F04C; }
+
+  /* hero */
+  .hero { padding: 48px 0 12px; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; background: rgba(198,240,76,.08); border: 1px solid rgba(198,240,76,.25); color: #C6F04C; border-radius: 999px; padding: 6px 16px; font-size: 12.5px; font-weight: 600; letter-spacing: .04em; margin-bottom: 22px; }
+  .pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #C6F04C; box-shadow: 0 0 8px rgba(198,240,76,.8); }
+  h1 { font-size: clamp(30px, 5vw, 46px); font-weight: 800; letter-spacing: -.02em; color: #fff; line-height: 1.15; margin-bottom: 16px; }
+  h1 em { font-style: normal; color: transparent; background: linear-gradient(120deg, #C6F04C, #a8e63c); -webkit-background-clip: text; background-clip: text; }
+  .lede { font-size: 17px; color: #9B9DA3; max-width: 620px; }
+  .updated { display: inline-block; margin-top: 18px; font-size: 13px; color: #5C5E63; border: 1px solid #1F2024; background: #0E0F12; border-radius: 8px; padding: 6px 14px; font-family: Consolas, monospace; }
+
+  /* summary cards */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 44px 0 10px; }
+  .card { background: linear-gradient(180deg, #101013, #0B0B0D); border: 1px solid #1F2024; border-radius: 14px; padding: 20px; transition: border-color .2s, transform .2s; }
+  .card:hover { border-color: rgba(198,240,76,.4); transform: translateY(-2px); }
+  .card .ic { width: 38px; height: 38px; border-radius: 9px; background: rgba(198,240,76,.1); border: 1px solid rgba(198,240,76,.25); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+  .card .ic svg { width: 20px; height: 20px; }
+  .card h3 { font-size: 14.5px; color: #fff; margin-bottom: 6px; font-weight: 700; }
+  .card p { font-size: 13.5px; color: #9B9DA3; line-height: 1.6; }
+
+  /* sections */
+  section { margin: 52px 0; }
+  .sec-label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #C6F04C; margin-bottom: 8px; }
+  h2 { font-size: 25px; font-weight: 800; letter-spacing: -.01em; color: #fff; margin-bottom: 18px; }
+  p.lead { color: #B5B7BC; margin-bottom: 20px; font-size: 15.5px; }
+
+  table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 8px 0 20px; font-size: 14px; border-radius: 12px; overflow: hidden; border: 1px solid #1F2024; }
+  th, td { text-align: left; padding: 13px 16px; }
+  th { background: #121316; color: #C6F04C; font-weight: 600; font-size: 12.5px; text-transform: uppercase; letter-spacing: .05em; border-bottom: 1px solid #1F2024; }
+  td { background: #0D0E10; color: #B5B7BC; border-bottom: 1px solid #16171A; }
+  tr:last-child td { border-bottom: none; }
+  td:first-child { font-weight: 600; color: #E8E8EA; }
+  td code { background: #141416; border: 1px solid #2A2B2F; border-radius: 5px; padding: 1px 7px; font-family: Consolas, monospace; font-size: .9em; color: #D8C7F5; white-space: nowrap; }
+
+  /* callout */
+  .callout { display: flex; gap: 16px; background: linear-gradient(180deg, rgba(198,240,76,.05), rgba(198,240,76,.02)); border: 1px solid rgba(198,240,76,.2); border-radius: 14px; padding: 20px 22px; margin: 24px 0; }
+  .callout svg { width: 22px; height: 22px; flex-shrink: 0; margin-top: 3px; }
+  .callout b { color: #C6F04C; }
+  .callout p { font-size: 14.5px; color: #C8C9CE; }
+
+  .list-tick { list-style: none; margin: 8px 0 20px; }
+  .list-tick li { position: relative; padding-left: 30px; margin-bottom: 12px; color: #B5B7BC; font-size: 15px; }
+  .list-tick li::before { content: ""; position: absolute; left: 2px; top: 5px; width: 16px; height: 16px; border-radius: 50%; background: rgba(198,240,76,.15); border: 1px solid rgba(198,240,76,.5); }
+  .list-tick li::after { content: ""; position: absolute; left: 7px; top: 10px; width: 6px; height: 3px; border-left: 2px solid #C6F04C; border-bottom: 2px solid #C6F04C; transform: rotate(-45deg); }
+
+  a { color: #C6F04C; text-decoration: none; border-bottom: 1px solid rgba(198,240,76,.3); }
+  a:hover { border-bottom-color: #C6F04C; }
+  strong { color: #fff; }
+
+  footer { border-top: 1px solid #16171A; padding: 30px 0 60px; margin-top: 40px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; color: #4A4B50; font-size: 13.5px; }
+  .foot-mark { display: flex; align-items: center; gap: 8px; color: #6B6D73; }
+  .foot-mark .mini { width: 22px; height: 22px; border-radius: 6px; background: #0B0B0C; border: 1px solid #2A2B2F; display: flex; align-items: center; justify-content: center; }
+  .foot-mark .mini svg { width: 15px; height: 15px; }
+
+  @media (max-width: 600px) {
+    .cards { grid-template-columns: 1fr; }
+    nav .right { display: none; }
+    h1 { font-size: 32px; }
+    .hero { padding-top: 32px; }
+  }
 </style>
 </head>
 <body>
+<div class="bg"></div>
 <div class="wrap">
-  <header>
+
+  <nav>
     <div class="logo">
       <svg viewBox="0 0 48 48" fill="none">
         <rect x="1.5" y="1.5" width="45" height="45" rx="10" fill="#0B0B0C" stroke="#2A2B2F"/>
@@ -42,40 +105,91 @@
         <path d="M21 24h6M21 28.5h6" stroke="#0B0B0C" stroke-width="2" stroke-linecap="round"/>
       </svg>
     </div>
-    <h1>SnapNotes</h1>
+    <div class="brandname">Snap<span>Notes</span></div>
+    <div class="right"><a href="#data">Data Handling</a><a href="#permissions">Permissions</a><a href="#principles">Principles</a><a href="#contact">Contact</a></div>
+  </nav>
+
+  <header class="hero">
+    <span class="pill">No data collected · On-device only</span>
+    <h1>Your notes stay <em>yours</em>.<br>Always.</h1>
+    <p class="lede">SnapNotes is a privacy-first OCR &amp; note-taking extension. Everything — screenshots, OCR, search, storage — runs locally inside your browser. Nothing is ever uploaded, tracked, or sold.</p>
+    <span class="updated">Last updated · September 2026</span>
   </header>
-  <div class="meta">Chrome Extension — Privacy Policy</div>
-  <span class="badge">✓ No data collected</span>
 
-  <h2>Summary</h2>
-  <p>SnapNotes does <strong>not</strong> collect, store, transmit, or share any personal data. All processing happens locally on your device.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C6F04C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3>Zero Uploads</h3>
+      <p>Screenshots &amp; OCR text never leave your device. No cloud servers involved.</p>
+    </div>
+    <div class="card">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C6F04C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+      <h3>Fully Offline OCR</h3>
+      <p>The Tesseract.js engine is bundled inside the extension — works without internet.</p>
+    </div>
+    <div class="card">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C6F04C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+      <h3>No Account</h3>
+      <p>No sign-up, no telemetry, no analytics, no tracking of any kind.</p>
+    </div>
+  </div>
 
-  <h2>Data handling</h2>
-  <table>
-    <tr><th>Data</th><th>What happens</th></tr>
-    <tr><td>Screenshots / captured images</td><td>Processed locally in your browser for OCR. Never uploaded.</td></tr>
-    <tr><td>OCR text / notes</td><td>Stored ONLY in your browser's local storage (IndexedDB + your Downloads folder as PNG files). Never transmitted.</td></tr>
-    <tr><td>Custom subjects</td><td>Stored locally in your browser (<code>chrome.storage</code>). Never transmitted.</td></tr>
-    <tr><td>Usage analytics</td><td>None. No analytics, no telemetry, no tracking scripts.</td></tr>
-  </table>
+  <section id="data">
+    <div class="sec-label">01 · Data Handling</div>
+    <h2>What happens to your data</h2>
+    <p class="lead">Short version: it stays on your machine. The table below is the full picture.</p>
+    <table>
+      <tr><th>Data</th><th>What happens</th></tr>
+      <tr><td>Screenshots / captured images</td><td>Processed locally in your browser for OCR. Never uploaded.</td></tr>
+      <tr><td>OCR text / notes</td><td>Stored only in your browser's local storage (<code>IndexedDB</code>) and as PNG files in your Downloads folder. Never transmitted.</td></tr>
+      <tr><td>Custom subjects</td><td>Stored locally via <code>chrome.storage</code>. Never transmitted.</td></tr>
+      <tr><td>Usage analytics</td><td>None. No analytics, no telemetry, no tracking scripts.</td></tr>
+    </table>
+  </section>
 
-  <h2>Permissions explained</h2>
-  <table>
-    <tr><th>Permission</th><th>Why we need it</th></tr>
-    <tr><td><code>activeTab</code> + <code>scripting</code></td><td>To inject the drag-select overlay on the page you are viewing when you press Snap.</td></tr>
-    <tr><td><code>tabs</code> + <code>captureVisibleTab</code></td><td>To take a screenshot of the current tab for OCR.</td></tr>
-    <tr><td><code>downloads</code></td><td>To save your screenshot/note PNG files to your Downloads folder.</td></tr>
-    <tr><td><code>storage</code></td><td>To save your custom subjects and note index locally.</td></tr>
-  </table>
+  <section id="permissions">
+    <div class="sec-label">02 · Permissions</div>
+    <h2>Why each permission exists</h2>
+    <p class="lead">SnapNotes asks for the minimum permissions needed to do its job — and nothing else.</p>
+    <table>
+      <tr><th>Permission</th><th>Reason</th></tr>
+      <tr><td><code>activeTab</code> + <code>scripting</code></td><td>Inject the drag-select overlay onto the page you're viewing when you press Snap.</td></tr>
+      <tr><td><code>tabs</code> + <code>captureVisibleTab</code></td><td>Capture a screenshot of the current tab for OCR.</td></tr>
+      <tr><td><code>downloads</code></td><td>Save your screenshot/note PNGs to your Downloads folder.</td></tr>
+      <tr><td><code>storage</code></td><td>Store your custom subjects and note index locally.</td></tr>
+    </table>
+  </section>
 
-  <h2>Google Translate (optional)</h2>
-  <p>When you press the Translate button, the OCR text is opened in Google Translate in a new tab. At that point the text is sent to Google under Google's own privacy policy, because you explicitly chose to translate it. This never happens automatically.</p>
+  <section id="principles">
+    <div class="sec-label">03 · Privacy Principles</div>
+    <h2>Designed private by default</h2>
+    <ul class="list-tick">
+      <li><strong>Local-first architecture</strong> — capture, OCR, search and storage all happen on-device.</li>
+      <li><strong>Offline capable</strong> — the OCR engine ships inside the package; no runtime network calls.</li>
+      <li><strong>Explicit translation only</strong> — pressing Translate opens Google Translate in a new tab, under Google's own policy. Never automatic.</li>
+      <li><strong>No third-party SDKs</strong> — no advertising, crash-reporting, or analytics SDKs.</li>
+    </ul>
+  </section>
 
-  <h2>Third-party services</h2>
-  <p><strong>Tesseract.js OCR engine</strong> — bundled inside the extension, runs fully offline. No network requests.</p>
-  <p><strong>Google Translate</strong> — only when you click Translate (optional).</p>
+  <div class="callout">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#C6F04C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4M12 16h.01"/></svg>
+    <p><b>One exception, fully in your control:</b> the optional <b>Translate</b> button sends your OCR text to Google Translate — but only when <i>you</i> click it. This is never automatic and never happens in the background.</p>
+  </div>
 
-  <footer>Questions about this policy: contact the developer via the Chrome Web Store developer page.<br>Effective date: September 2026</footer>
+  <section id="contact">
+    <div class="sec-label">04 · Contact</div>
+    <h2>Questions about privacy?</h2>
+    <p class="lead">If you have any questions about this policy or SnapNotes, reach out through the developer contact on the <a href="https://chrome.google.com/webstore" target="_blank" rel="noopener">Chrome Web Store</a> listing.</p>
+  </section>
+
+  <footer>
+    <div class="foot-mark">
+      <span class="mini"><svg viewBox="0 0 48 48" fill="none"><rect x="1.5" y="1.5" width="45" height="45" rx="10" fill="#0B0B0C" stroke="#2A2B2F"/><g stroke="#C6F04C" stroke-width="3.4" stroke-linecap="round"><path d="M16 7.5H10.5A3 3 0 0 0 7.5 10.5V16"/><path d="M32 7.5h5.5a3 3 0 0 1 3 3V16"/><path d="M16 40.5h-5.5a3 3 0 0 1-3-3V32"/><path d="M32 40.5h5.5a3 3 0 0 0 3-3V32"/></g><rect x="17.5" y="16" width="13" height="18" rx="2.5" fill="#C6F04C"/><path d="M21 24h6M21 28.5h6" stroke="#0B0B0C" stroke-width="2" stroke-linecap="round"/></svg></span>
+      SnapNotes · Chrome Extension
+    </div>
+    <span>© 2026 SnapNotes. All rights reserved.</span>
+  </footer>
+
 </div>
 </body>
 </html>
